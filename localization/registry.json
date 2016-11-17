@@ -1,0 +1,5 @@
+[
+        { "code": "en", "language" : "English", "default" : false, "selectAnOrg" : "Select an organization for this session"},
+        { "code": "es", "language" : "Spanish", "default" : true, "selectAnOrg": "Seleccionar y organización para esta sesión"}
+]
+
