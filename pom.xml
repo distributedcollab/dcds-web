@@ -37,7 +37,7 @@
   <artifactId>dcds-web</artifactId>
   <packaging>pom</packaging>
   <name>DCDS Web Pom</name>
-  <version>6.4-SNAPSHOT</version>
+  <version>6.4</version>
 
   <modules>
     <module>modules</module>
