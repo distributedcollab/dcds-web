@@ -157,23 +157,22 @@ define(["ol",'ext', 'iweb/CoreModule','dcds/modules/UserProfileModule', './Featu
 					margin:'0 0 10 10',
 					handler: function(btn) {
 						switch (this.getText()){
-							case 'Edit':
+							case Core.Translate.i18nJSON('Edit'):
 								comments.hide();
 								newComments.show();
 								this.setText(Core.Translate.i18nJSON('Update'));
 								break;
-							case 'Update':
+							case Core.Translate.i18nJSON('Update'):
 								if (newComments.isValid()) {
 									this.setText(Core.Translate.i18nJSON('Edit'));
-								attributes.comments = newComments.getValue();
-								feature.set("attributes", attributes);
-								newComments.hide();
-								comments.setValue(newComments.getValue());			
-								comments.show();
-								this.setText(Core.Translate.i18nJSON('Edit Comments'));
+									attributes.comments = newComments.getValue();
+									feature.set("attributes", attributes);
+									newComments.hide();
+									comments.setValue(newComments.getValue());			
+									comments.show();
 								}
 								else {
-									alert('Please enter a valid comment');
+									alert(Core.Translate.i18nJSON('Please enter a valid comment'));
 									newComments.setValue("");
 								}			
 								break;
@@ -206,11 +205,23 @@ define(["ol",'ext', 'iweb/CoreModule','dcds/modules/UserProfileModule', './Featu
 		
     	formatDateString: function(date)
         {
-    		var str = "";
-    		if (date){
-    		  var components = date.split("-",3);
-    		  str = components[1] + "/" + components[2] + "/" + components[0];
-        	}
+    		/*Takes a string in the form 'YYY-MM-DD' and formats it into a locale friendly string
+             *Since the date is a string, and has no time, when we convert it to a JS date, it will convert the date to midnight, UTC.
+             *For users west of GMT this will change the date to the day before (01/01/2016 00:00:00 GMT is 12/31/15  19:00:00 EST).  
+             *So, we will set all dates to be noon on the date passed in, and add/subtract the timezoneoffset.  Setting it to noon should take 
+             *care of the issue of timezoneoffset changing with Daylight Savings. 
+             *And, JS numbers its months as 0 - 11, so we subtract one from the month number passed in
+             *And we don't actually know the users locale.  So we pass undefined into LocateDateString so it will use the user's default locale
+            */
+            var str = "";
+            if (date){
+              var components = date.split("-",3);
+              var utcDate = new Date( Date.UTC(components[0],  (components[1]-1),  components[2], 12,0));
+              var tzOffset = utcDate.getTimezoneOffset();
+              utcDate.setHours( utcDate.getHours() + (tzOffset/60))
+              var options = {  year: 'numeric', month: 'numeric', day: 'numeric' };
+              str =  utcDate.toLocaleDateString(undefined, options);
+            }
             return str;
         
         },

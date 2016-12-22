@@ -96,7 +96,7 @@ require(["iweb/CoreModule","dcds/modules/LoginModule", "dcds/modules/UserProfile
 				        	//Add Title
 							Core.View.addToTitleBar([{xtype: 'tbspacer', width: 5},{xtype: "label", html: "<b>" +
 								((Core.Config.getProperty("main.site.label") || '') ? Core.Config.getProperty("main.site.label") :
-								"Next-Generation Incident Command System" ) + "</b>"}]);
+								"Distributed Collaboration and Decision Support" ) + "</b>"}]);
 				        	
 				        	var MapController = MapModule.load();
 			

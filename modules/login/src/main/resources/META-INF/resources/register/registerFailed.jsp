@@ -32,15 +32,14 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="edu.mit.ll.dcds.servlet.register_messages" />
+<fmt:setBundle basename="edu.mit.ll.dcds.servlet.RegisterBundle" var="lang"/>
+
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Register Error</title>
+        <title><fmt:message key="registerError" bundle="${lang}"/></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,14 +53,14 @@
                 <div class="content-wrapper">
                     <!-- <img src="register/images/dcds-logo.jpg" height="290px" width="423px"></img> -->
                     <br>
-                    <h2><fmt:message key="${errorMessageKey}" /></h2>
+                    <h2><fmt:message key="${errorMessageKey}" bundle="${lang}" /></h2>
                     <center>
                     <div style="width:60%">
                     	<p><%= request.getAttribute("REASON") %></p>
                     	
 	                    <c:url var="register_url" value="/register"/>
 	                    <p class="message">
-	                    	<fmt:message key="${errorDescriptionKey}" />
+	                    	<fmt:message key="${errorDescriptionKey}" bundle="${lang}" />
 	                    </p>
                     </div>
                     </center>

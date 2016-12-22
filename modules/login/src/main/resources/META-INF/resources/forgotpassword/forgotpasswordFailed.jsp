@@ -32,7 +32,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<fmt:setBundle basename="edu.mit.ll.dcds.servlet.ForgotPasswordBundle" var="lang"/>
+<fmt:setBundle basename="edu.mit.ll.dcds.servlet.ForgotPasswordBundle" var="lang"/>
 
 <!doctype html>
 <html>
@@ -61,7 +61,7 @@
             </p>
             <br/>
             <p>
-            <a href="./login"><fmt:message key="${clickHereToLogin}" bundle="${lang}" /> </a>   
+           <a href="./login">  <fmt:message key="loginHere" bundle="${lang}" /> </a>   
             </p>
         </div>
     </div>

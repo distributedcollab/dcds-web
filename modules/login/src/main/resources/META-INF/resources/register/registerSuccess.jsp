@@ -40,7 +40,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Registration Success</title>
+        <title><fmt:message key="registrationSuccess" bundle="${lang}"/></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -53,15 +53,14 @@
             <div class="content">
                 <div class="content-wrapper">                    
                     <br>
-                    <h2>Successfully registered!</h2>
+                    <h2><fmt:message key="successfullyRegistered" bundle="${lang}"/>!</h2>
                     
                     <p>
-                    You've successfully registered for DCDS. Your account will now be under review, 
-                    and enabled by an administrator.
+                    <fmt:message key="underReview" bundle="${lang}"/>
                     </p>
                     
                     <p>
-                    Click <a href="./login">here</a> to return to the login page.
+                    <a href="./login"><fmt:message key="clickHere" bundle="${lang}"/></a> <fmt:message key="returntoLogin" bundle="${lang}"/>.
                     </p>
             	</div>
             </div>
@@ -69,18 +68,18 @@
            
             <div class="footer">
 
-                <span class="footer-right nav">
-                    <span>
-                        <a href="about.html">About</a>
+                span class="footer-right nav">
+                     <span>
+                        <a href="about.html"><fmt:message key="about" bundle="${lang}"/></a>
                     </span>
                     <span>
-                        <a href="terms.html">Terms</a>
+                        <a href="terms.html"><fmt:message key="terms" bundle="${lang}"/></a>
                     </span>
                     <span>
-                        <a href="settings.html">Settings</a>
+                        <a href="settings.html"><fmt:message key="settings" bundle="${lang}"/></a>
                     </span>
                     <span>
-                        <a href="https://public.dcds.ll.mit.edu" target="_blank">Help</a>
+                        <a href="<c:out value="${requestScope.helpsite}" />" target="_blank"><fmt:message key="help" bundle="${lang}"/></a>
                     </span>
                 </span>
             </div>
